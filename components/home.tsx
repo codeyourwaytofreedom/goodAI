@@ -8,18 +8,17 @@ import io from "socket.io-client";
 import { useEffect } from "react";
 import h from "../styles/home.module.css";
 
-
-const socket: Socket = io("http://localhost:80");
-socket.connect();
-
-
+//socket connection to server port
+/* const socket: Socket = io("http://localhost:80");
+socket.connect(); */
 
 const Home_page = () => {
     const [scaling_index, setIndex] = useState<number>(1)
-    useEffect(() => {
+
+//socket operation to retrieve random number from node server. commented out for deploying purposes.
+/*     useEffect(() => {
         socket.on('connect', () => {
         });
-    
         socket.on('scaling_index', (ind) => {
             console.log(ind)
             setIndex(ind)
@@ -29,9 +28,14 @@ const Home_page = () => {
           socket.off('connect');
           socket.off('scaling_index');
         };
-      }, []);
+      }, []); */
+
     const handle_click = () => {
-        socket.emit("request_scaling_index")
+        //backend version with node express, using socket.io
+        //socket.emit("request_scaling_index")
+
+        //frontend version
+        setIndex( Math.random() * (2.75 - 1) + 1)
       }
     return ( 
         <>
