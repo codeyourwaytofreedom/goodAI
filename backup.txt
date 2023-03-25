@@ -1,0 +1,85 @@
+{/* head */}
+<group position={[-0.07,1.15,0]} scale={4}>
+    {
+        blocks.map ((b,i) => head.includes(i) && 
+        <mesh scale={sscale} key={i} rotation={[0,0,Math.PI]}>
+            <extrudeGeometry args={[b.shp, extrudeSettings]}/>            
+            <meshBasicMaterial color={b.color} />
+        </mesh> 
+        )
+    }
+</group>
+{/* neck */}
+<group position={[-0.07,1.05,0]} scale={4}>
+    {
+        blocks.map ((b,i) => neck.includes(i) && 
+        <mesh scale={sscale} key={i} rotation={[0,0,Math.PI]}>
+            <extrudeGeometry args={[b.shp, extrudeSettings]}/>            
+            <meshBasicMaterial color={b.color} />
+        </mesh> 
+        )
+    }
+</group>
+{/* body */}
+<group position={[-0.08,1,0]} scale={4}>
+    {
+        blocks.map ((b,i) => body.includes(i) && 
+        <mesh scale={sscale} key={i} rotation={[0,0,Math.PI]}>
+            <extrudeGeometry args={[b.shp, extrudeSettings]}/>            
+            <meshBasicMaterial color={b.color} />
+        </mesh> 
+        )
+    }
+</group>
+{/* right wing */}
+<group position={[0,1,0]} scale={4}>
+    {
+        blocks.map ((b,i) => right_wing.includes(i) && 
+        <mesh scale={sscale} key={i} rotation={[0,0,Math.PI]}>
+            <extrudeGeometry args={[b.shp, extrudeSettings]}/>            
+            <meshBasicMaterial color={b.color} />
+        </mesh> 
+        )
+    }
+</group>
+
+{/* left wing */}
+<group position={[-0.15,1,0]} scale={4}>
+    {
+        blocks.map ((b,i) => left_wing.includes(i) && 
+        <mesh scale={sscale} key={i} rotation={[0,0,Math.PI]}>
+            <extrudeGeometry args={[b.shp, extrudeSettings]}/>            
+            <meshBasicMaterial color={b.color} />
+        </mesh> 
+        )
+    }
+</group>
+
+
+
+
+
+
+
+
+
+
+
+
+        {/* testing */}
+        <group position={[0,1,0]} scale={4}>
+            {
+                blocks.map ((b,i) => !excluded.includes(i) && 
+                <mesh scale={sscale} key={i} rotation={[0,0,Math.PI]} onClick={(e)=>{
+                    e.stopPropagation();
+                    console.log(i); 
+                    setExcluded([...excluded, i]);
+                    remaining.push(i);
+                    console.log(remaining)
+                    }}>
+                    <extrudeGeometry args={[b.shp, extrudeSettings]}/>            
+                    <meshBasicMaterial color={b.color} />
+                </mesh> 
+                )
+            }
+        </group>
